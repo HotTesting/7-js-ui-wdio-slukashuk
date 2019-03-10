@@ -10,10 +10,7 @@
 
 // Each implemented test gives you 15 points (max total - 45)
 
-const chai = require("chai"),
-  expect = chai.expect;
-
-chai.use(require("chai-sorted"));
+import { expect } from "chai";
 
 before(function () {
   browser.url('/')
@@ -54,7 +51,7 @@ describe("Search results sorting", function () {
 
     const allDucks = $$('.product');
     const duckPrices = allDucks.map(price => parseInt(price.getAttribute('data-price')));
-    expect(duckPrices).to.be.sorted({ descending: false });
+    (<any>expect(duckPrices).to.be).sorted({ descending: false });
     let sorted = true;
 
     for (let i = 0; i < duckPrices.length - 1; i++) {
@@ -70,7 +67,7 @@ describe("Search results sorting", function () {
     $('a[href*="name"]').click();
     const allDucks = $$('.product');
     const duckNames = allDucks.map(name => name.getAttribute('data-name'));
-    expect(duckNames).to.be.sorted({ descending: false });
+    (<any>expect(duckNames).to.be).sorted({ descending: false });
   });
 });
 

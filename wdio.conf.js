@@ -2,7 +2,7 @@ exports.config = {
   hostname: "localhost",
   port: 4444,
   path: "/wd/hub",
-  specs: ["./tests/hw1.ts"],
+  specs: ["./tests/hw2.ts"],
   sync: true,
   services: ["selenium-standalone"],
   capabilities: [
@@ -20,5 +20,9 @@ exports.config = {
   before: function(capabilities, specs) {
     process.env.TS_NODE_FILES = true;
     require("ts-node").register();
+    const chai = require("chai"),
+    expect = chai.expect; // preference and tested with expect
+ 
+    chai.use(require("chai-sorted"));
   }
 };
