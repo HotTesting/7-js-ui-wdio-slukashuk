@@ -20,7 +20,7 @@ before(function () {
 })
 
 describe("Cart", function () {
-    it("adding one item to cart should be successful", function () {
+    it.only("adding one item to cart should be successful", function () {
         Products.searchForItem('purple');
         Products.addProductToCart();
         ShoppingCart.openCart();
@@ -28,15 +28,15 @@ describe("Cart", function () {
     });
 
     it("removing one item from cart should be successful", function () {
-        Products.searchForItem('purple');
-        Products.addProductToCart();
-        ShoppingCart.openCart();
         ShoppingCart.removeProductFromCart();
         expect($('.item[data-name = "Purple Duck"]').isDisplayed()).to.equal(false);
     });
 
     // from 1 to 2
     it("increasing item quantity in cart should be successful", function () {
+        browser.url('/');
+        Products.searchForItem('purple');
+        Products.addProductToCart();
         ShoppingCart.openCart();
         ShoppingCart.increaseItems();
         const itemsCount = ShoppingCart.getQuantity();
@@ -45,7 +45,6 @@ describe("Cart", function () {
 
     // from 2 to 1
     it("decreasing item quantity in cart should be successful", function () {
-        ShoppingCart.openCart();
         ShoppingCart.decreaseItems();
         const itemsCount = ShoppingCart.getQuantity();
         expect(itemsCount).to.equal(1);
@@ -54,7 +53,7 @@ describe("Cart", function () {
 
 describe("Prices", function () {
     it("can be switched to EUR", function () {
-        MainPage.openChangeSettings();
+        browser.url('/');
         MainPage.changeCurrencyToEUR();
         const currency = MainPage.getCurrentCurrency();
         expect(currency).to.contain("EUR");

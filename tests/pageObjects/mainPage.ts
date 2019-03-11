@@ -1,6 +1,7 @@
 export class mainPage {
 
     openChangeSettings() {
+        browser.url('/');
         const settings = $('a[href$="regional_settings"]');
         settings.click();
         settings.waitForDisplayed(4000);
@@ -15,9 +16,9 @@ export class mainPage {
       currencySelect.waitForDisplayed(4000);
       currencySelect.click();
   
-      const currencyValueEUR = $("option[value='EUR']");
+      const currencyValueEUR = $('select[name="currency_code"]');
       currencyValueEUR.waitForDisplayed(4000);
-      currencyValueEUR.click();
+      currencyValueEUR.selectByVisibleText('Euros')
   
       $("button[value='Save']").click();
     }

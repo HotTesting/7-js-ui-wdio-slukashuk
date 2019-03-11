@@ -7,11 +7,10 @@ export class products {
         $('.btn-success').waitForDisplayed(3000);
     }
 
-    addProductToCart(){
+    addProductToCart() {
         $('.btn-success').waitForDisplayed(3000);
         $('.btn-success').click();
         browser.pause(3000);
     }
-    
 }
 export const Products = new products();

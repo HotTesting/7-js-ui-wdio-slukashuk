@@ -15,7 +15,8 @@ export class shoppingCart {
         const items = quantityInput.getValue();
         quantityInput.waitForDisplayed(4000);
         quantityInput.clearValue();
-        return quantityInput.setValue(items + 1);
+        const increasedItem = Number(items) + 1;
+        return quantityInput.setValue(increasedItem);
     }
 
     decreaseItems(): any {
@@ -23,7 +24,8 @@ export class shoppingCart {
         const quantityInput = $('input[name*="quantity"]');
         quantityInput.clearValue();
         $(".loader-wrapper").waitForDisplayed(undefined, true); // waiting when loader become disabled
-        return quantityInput.setValue(items - 1);
+        const decreasedItem = Number(items) - 1;
+        return quantityInput.setValue(decreasedItem);
       }
 
     getQuantity(): number {
