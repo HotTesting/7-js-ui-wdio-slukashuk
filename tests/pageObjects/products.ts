@@ -10,7 +10,11 @@ export class products {
     addProductToCart() {
         $('.btn-success').waitForDisplayed(3000);
         $('.btn-success').click();
-        browser.pause(3000);
+        let quantity = $('.quantity')
+        browser.waitUntil(()=> {
+            return Number(quantity.getText()) === 1;
+        }, 4000, 'some message', 100);
+
     }
 }
 export const Products = new products();

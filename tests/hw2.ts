@@ -16,11 +16,10 @@ import {MainPage} from "./pageObjects/mainPage";
 
 before(function () {
     browser.url('/');
-    browser.pause(3000);
 })
 
 describe("Cart", function () {
-    it.only("adding one item to cart should be successful", function () {
+    it("adding one item to cart should be successful", function () {
         Products.searchForItem('purple');
         Products.addProductToCart();
         ShoppingCart.openCart();
